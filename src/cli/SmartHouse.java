@@ -194,10 +194,10 @@ public class SmartHouse{
 		if("q".equalsIgnoreCase(str)) {
 			submenu_4();
 		}else if("1".equals(str)) {
-			device.open();
+			device.on();
 			submenu_4();
 		}else if("2".equals(str)) {
-			device.close();
+			device.off();
 			submenu_4();
 		}else {
 			System.out.println("Invalid Input!");

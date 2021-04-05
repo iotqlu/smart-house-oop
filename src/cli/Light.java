@@ -2,12 +2,12 @@ package cli;
 
 public class Light extends Device{
 	
-	public void open(){
+	public void on(){
 		this.status = true;
 		System.out.println("The Light Device #"+id+" has been Turned ON;");
 	}
 
-	public void close(){
+	public void off(){
 		this.status = false;
 		System.out.println("The Light Device #"+id+" has been Turned OFF;");
 	}
