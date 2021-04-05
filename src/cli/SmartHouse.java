@@ -20,11 +20,7 @@ public class SmartHouse{
 	}
 	
 	private void retireDevice(Device dev){
-		for(Device device:devices){
-			if(device.equals(dev)){
-				devices.remove(device);
-			}
-		}
+		devices.remove(dev);
 	}
 
 	private void status(){
@@ -53,6 +49,7 @@ public class SmartHouse{
 				+ "[Q] Quit\n"
 				+ "> ";
 		
+		System.out.println("");
 		System.out.print(menu);
 		
 		
@@ -76,6 +73,7 @@ public class SmartHouse{
 				+ "[2] Install a A/C\n"
 				+ "[Q] Quit\n"
 				+ "> ";
+		System.out.println("");
 		System.out.print(menu);
 		
 		switch(br.readLine()) {
@@ -113,9 +111,9 @@ public class SmartHouse{
 		for(int i = 0;i<devices.size();i++) {
 			Device device = devices.get(i);
 			if(device instanceof Light) {
-				System.out.format("[%s] Light #%s", i+1, device.id);
+				System.out.format("[%s] Light #%s\n", i+1, device.id);
 			}else if(device instanceof AC){
-				System.out.format("[%s] A/C #%s", i+1, device.id);
+				System.out.format("[%s] A/C #%s\n", i+1, device.id);
 			}
 		}
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -126,7 +124,7 @@ public class SmartHouse{
 		}else{
 			try {
 				int index = Integer.parseInt(str);
-				Device device = devices.get(index);
+				Device device = devices.get(index-1);
 				this.retireDevice(device);
 				if(device instanceof Light) {
 					System.out.format("The Light #%s has been retired successfully!", device.id);
@@ -135,6 +133,7 @@ public class SmartHouse{
 				}
 				menu();
 			}catch(Exception e) {
+				e.printStackTrace();
 				System.out.println("Invalid Input!");
 				submenu_2();
 			}
@@ -179,8 +178,9 @@ public class SmartHouse{
 	private void subsubmenu_4(Device device) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
-		System.out.println("[1] Open");
-		System.out.println("[2] Close");
+		System.out.println("");
+		System.out.println("[1] Turn On");
+		System.out.println("[2] Turn Off");
 		System.out.println("[Q] Quit");
 		
 		if(device instanceof Light) {
