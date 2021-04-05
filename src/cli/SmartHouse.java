@@ -10,14 +10,6 @@ public class SmartHouse{
 	private void installDevice(Device device){
 		devices.add(device);
 	}
-
-	private void retireDevice(String id){
-		for(Device device:devices){
-			if(id.equalsIgnoreCase(device.id)){
-				devices.remove(device);
-			}
-		}
-	}
 	
 	private void retireDevice(Device dev){
 		devices.remove(dev);
@@ -89,9 +81,8 @@ public class SmartHouse{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("> Input the Light ID: # ");
 		String id = br.readLine();
-		Light light = new Light();
-		light.id = id;
-		devices.add(light);
+		Light light = new Light(id);
+		installDevice(light);
 		System.out.format("The Light %s has been installed successfully!\n", id);
 		submenu_1();
 	}
@@ -100,9 +91,8 @@ public class SmartHouse{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("> Input the A/C  ID: # ");
 		String id = br.readLine();
-		AC ac = new AC();
-		ac.id = id;
-		devices.add(ac);
+		AC ac = new AC(id);
+		installDevice(ac);
 		System.out.format("The AC %s has been installed successfully!\n", id);
 		submenu_1();
 	}

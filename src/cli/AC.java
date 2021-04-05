@@ -1,6 +1,10 @@
 package cli;
 
 public class AC extends Device{
+	
+	public AC(String id) {
+		this.id = id;
+	}
 
 	public void on(){
 		this.status = true;
